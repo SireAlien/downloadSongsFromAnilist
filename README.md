@@ -3,7 +3,7 @@ Download songs within an [AniList](https://anilist.co)'s user list.
 Based on [AMQ-Artists-DB](https://github.com/xSardine/AMQ-Artists-DB).
 
 ## Dependencies 
-*[mutagen](https://pypi.org/project/mutagen/)
+* [mutagen](https://pypi.org/project/mutagen/)
 
 ## Instructions
 To use the graphical interface, launch ui.py.  
