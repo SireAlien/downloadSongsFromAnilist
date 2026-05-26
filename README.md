@@ -13,7 +13,7 @@ To use the terminal interface, laungh fetchSongsFromList.py from the terminal.
 * AniList username: self explainatory.
 * List name: name of the specifit list (ie. "Completed", "Paused", "SomeCustomList").
 * Song type: Opening, Ending, Insert or All of them.
-* Language: the name of the song files will use the anime's title in this language (case sensitive in terminal interface).
+* Language: the name of the song files will use the anime's title in this language.
 * Path: self explainatory.
 
 ## Notes
