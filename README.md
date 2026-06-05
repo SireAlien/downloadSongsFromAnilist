@@ -5,7 +5,7 @@ Based on [AMQ-Artists-DB](https://github.com/xSardine/AMQ-Artists-DB).
 ## Dependencies 
 * [mutagen](https://pypi.org/project/mutagen/)
 
-## Instructions
+## Usage
 To use the graphical interface, launch ui.py.  
 To use the terminal interface, laungh fetchSongsFromList.py from the terminal.
 
