@@ -1,6 +1,6 @@
 # downloadSongsFromAnilist
 Download songs within an [AniList](https://anilist.co)'s user list.  
-Based on [AMQ-Artists-DB](https://github.com/xSardine/AMQ-Artists-DB).
+Based on [AMQ-Artists-DB](https://github.com/xSardine/AMQ-Artists-DB).  
 For the Spotify/Apple Music equivalent check out [AniPlaylist](https://aniplaylist.com/my-aniplaylist)
 
 ## Dependencies 
