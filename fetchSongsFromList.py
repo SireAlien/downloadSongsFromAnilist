@@ -6,7 +6,7 @@ def downloadMp3FromUsername_List_SongTypes_Language(username, listName, songType
     anime = fl.getAnimeFromUsername_List(username, listName)
     language = f'anime{language}Name'
     for titleEN, titleJP, id in anime:
-        fs.downloadMp3FromTitles_ID_SongType(titleJP, titleEN, [id], songTypes, language, path)
+        fs.downloadMp3FromTitles_ID_SongTypes(titleJP, titleEN, [id], songTypes, language, path)
 
 if __name__ == "__main__":
     name = input("AniList username: ")
