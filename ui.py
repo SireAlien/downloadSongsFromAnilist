@@ -7,7 +7,7 @@ import fetchSongsFromList as ff
 from threading import Thread
 
 root = Tk()
-root.geometry('320x180')
+root.geometry('400x200')
 root.title('Download AniSongs')
 
 def onSelectDirectoryChangeButtonText(directoryButton):
@@ -46,7 +46,7 @@ def onDownloadButtonClickThread( ):
         messagebox.showerror("Error", "Please enter both username and list name.")
         return
 
-    ff.downloadMp3FromUsername_List_SongType_Language(username, listName, songTypes, language, filepath)
+    ff.downloadMp3FromUsername_List_SongTypes_Language(username, listName, songTypes, language, filepath)
     print("Download completed!")
     downloadStatusLabel.config(text="Download completed!")
 
