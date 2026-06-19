@@ -4,8 +4,8 @@ from mutagen.easyid3 import EasyID3
 from mutagen import File
 
 url = "https://anisongdb.com/api/"
+
 songTypes = {
-    "ALL": "ALL",
     "OP": "Opening",
     "ED": "Ending",
     "IN": "Insert"
@@ -29,13 +29,14 @@ def getSongListFromTitle(title):
     print(f"Found {len(response.json())} songs for {title}.")
     return response.json()
 
-def getSongsFromTitle_SongType(title, songType):
+def getSongsFromTitle_SongTypes(title, songTypes):
     entries = getSongListFromTitle(title)
-    if songType == "ALL":
+    if "Opening" in songTypes and "Ending" in songTypes and "Insert" in songTypes:
         return entries
     result = []
     for entry in entries:
-        if entry['songType'].split(' ')[0] == songType:
+        print(f"{entry['animeENName']} - {entry['songType']}")
+        if entry['songType'].split(' ')[0] in songTypes:
             result.append(entry)
     return result
 
@@ -93,23 +94,32 @@ def downloadMp3FromLink(entry, path = "./"):
     audio.save()
     return True
 
-def downloadMp3FromTitle_SongType(title, songType, language, path):    
+def downloadMp3FromTitle_SongType(title, songTypes, language, path):    
     return downloadMp3FromLinkList(
         getMp3ListFromSongList(
-            getSongsFromTitle_SongType(title, songType), language), path)
+            getSongsFromTitle_SongTypes(title, songTypes), language), path)
 
-def downloadMp3FromTitle_ID_SongType(title, idList, songType, language, path):    
+def downloadMp3FromTitle_ID_SongTypes(title, idList, songTypes, language, path):    
     if title is None:
         return False
     return downloadMp3FromLinkList(
         getMp3ListFromSongList(
             filterSongsByID(
-                getSongsFromTitle_SongType(title, songType),
+                getSongsFromTitle_SongTypes(title, songTypes),
                     idList), language), path)
 
-def downloadMp3FromTitles_ID_SongType(title1, title2, idList, songType, language, path):  
+def downloadMp3FromTitles_ID_SongTypes(title1, title2, idList, songTypes, language, path):  
     print(f"Trying to download songs for {title1}...")
-    success = downloadMp3FromTitle_ID_SongType(title1, idList, songType, language, path)
+    success = downloadMp3FromTitle_ID_SongTypes(title1, idList, songTypes, language, path)
     if not success:
-        success = downloadMp3FromTitle_ID_SongType(title2, idList, songType, language, path)
+        success = downloadMp3FromTitle_ID_SongTypes(title2, idList, songTypes, language, path)
     return success
+
+if __name__ == "__main__":
+    title = input("Anime title: ")
+    songTypes = [songTypes[x] for x in input("Song type (OP, ED, IN): ").split(",")]
+    filepath = input("File path to save songs (default is current directory): ") or "./"
+    language = input("Language for filename (JP, EN): ")
+    language = f'anime{language}Name'
+
+    downloadMp3FromTitle_SongType(title, songTypes, language, filepath)
