@@ -39,7 +39,7 @@ def onDownloadButtonClickThread( ):
         songTypes.append("Ending")
     if INCheckButton.instate(['selected']):
         songTypes.append("Insert")
-    language = "Romaji" if RomajRadio.instate(['selected']) else "English"
+    language = "JP" if RomajRadio.instate(['selected']) else "EN"
     filepath = filedialogButton.cget("text")
 
     if not username or not listName:
